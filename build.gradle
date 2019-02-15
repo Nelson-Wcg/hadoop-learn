@@ -1,0 +1,29 @@
+allprojects {
+    group 'com.hadoop'
+    version '1.0.0'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        mavenLocal()
+
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+subprojects {
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+        compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.7'
+        compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.7.7'
+
+    }
+}
